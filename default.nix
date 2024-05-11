@@ -1,11 +1,6 @@
-{ mkDerivation, base, lib }:
-mkDerivation {
-  pname = "testproj";
-  version = "0.1.0.0";
-  src = ./.;
-  isLibrary = false;
-  isExecutable = true;
-  executableHaskellDepends = [ base ];
-  license = lib.licenses.mit;
-  mainProgram = "testproj";
+{ sources ? import ./nix/sources.nix
+}:
+let pkgs = import sources.nixpkgs {};
+in
+{ copyrights = pkgs.haskellPackages.callCabal2nix "testproj" ./. {};
 }

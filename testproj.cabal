@@ -42,7 +42,7 @@ maintainer:         stanislav.ktak.smirnov@gmail.com
 
 -- A copyright notice.
 -- copyright:
-category:           Distribution
+category:           Development
 build-type:         Simple
 
 -- Extra doc files to be distributed with the package, such as a CHANGELOG or a README.
@@ -52,7 +52,7 @@ extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 
 common warnings
-    ghc-options: -Wall
+    ghc-options: -Wall -Wno-unused-do-bind
 
 executable testproj
     -- Import common warning flags.
@@ -69,6 +69,8 @@ executable testproj
 
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.17.2.1
+                    , gi-gtk
+                    , haskell-gi-base
 
     -- Directories containing source files.
     hs-source-dirs:   app
